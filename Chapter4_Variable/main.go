@@ -15,5 +15,5 @@ func main() {
 	month = "Nov"
 	fmt.Println(month, day, "th")
 
-	customPkg.Declaration()
+	customPkg.Declaration(day)
 }
