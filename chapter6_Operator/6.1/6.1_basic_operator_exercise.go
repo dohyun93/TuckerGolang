@@ -29,7 +29,7 @@ func main() {
 	fmt.Println("결과는: ", mybit2) // 000000110 -> 6
 	fmt.Println()
 
-	// shift 연산자
+	// shift 연산자 (오른쪽은 0~양의정수만 올수있다.)
 	fmt.Println("3. 시프트연산자 - <<")
 	var myInt int = 32
 	fmt.Println("왼쪽으로 비트연산하기 전: ", myInt)
