@@ -1,6 +1,7 @@
 package main
 
 import (
+	"TuckerGolang/Chapter4_Variable/customPkg"
 	"fmt"
 	"reflect"
 )
@@ -8,7 +9,7 @@ import (
 func main() {
 	var a float32 = 1234.523
 	var b float32 = 3456.123
-
+	customPkg.Declaration(3)
 	var c float32 = a * b
 	var d float32 = c * 3
 
