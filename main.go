@@ -17,5 +17,6 @@ func main() {
 	if math.Abs(myF-9.0) <= machineEpsilon {
 		fmt.Println("두 값은 동일합니다. 다만 이런 하드코딩방식은 옳지 않다.")
 	}
-
+	// 부동 소수점 학습! 아래는 유용 사이트
+	// https://gsmesie692.tistory.com/94
 }
