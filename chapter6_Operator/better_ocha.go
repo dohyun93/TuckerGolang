@@ -7,6 +7,22 @@ import (
 	"reflect"
 )
 
+func FYI() {
+	fmt.Println()
+	var myF float64 = 1e1
+	for i := 0; i < 10; i++ {
+		myF -= 0.1
+	}
+
+	fmt.Println(myF)
+	var machineEpsilon = 1e-14
+	if math.Abs(myF-9.0) <= machineEpsilon {
+		fmt.Println("두 값은 동일합니다. 다만 이런 하드코딩방식은 옳지 않다.")
+	}
+	// 부동 소수점 학습! 아래는 유용 사이트
+	// https://gsmesie692.tistory.com/94
+}
+
 func equal(a, b float64) bool {
 	return math.Nextafter(a, b) == b
 	// 만약 a가 b보다 작다면 a보다 1bit큰 값을 반환. 이게 b와 같다면 1bit차이로 작은 a가 b와 같다고 간주한다.
@@ -47,4 +63,6 @@ func main() {
 	// 0.1 0.2 0.3 0.3
 	// 0
 	// *big.Float
+
+	FYI()
 }
