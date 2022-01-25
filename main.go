@@ -3,12 +3,14 @@ package main
 import (
 	ch3 "TuckerGolang/ch3_HelloGoWorld"
 	ch4 "TuckerGolang/ch4_Variable"
+	ch5 "TuckerGolang/ch5_fmt"
 	"fmt"
 )
 
 func main() {
 	chapter3()
 	chapter4()
+	chapter5()
 }
 
 func chapter3() {
@@ -48,4 +50,9 @@ func chapter4() {
 	//uint는 32비트 CPU 컴퓨터는 uint32, 64비트 CPU 컴퓨터는 uint64와 동일
 
 	ch4.TypeDefaultValue()
+}
+
+func chapter5() {
+	ch5.FmtPrintFunctions()
+	ch5.FmtScanFunctions()
 }
