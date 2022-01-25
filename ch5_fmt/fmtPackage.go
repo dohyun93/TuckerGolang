@@ -110,4 +110,7 @@ func FmtScanFunctions() {
 	//error:  expected integer
 	//3 4 -> (enter) 4 3 이 입력되고 Scanln에 맞게 들어감.
 	//2 3 4
+
+	// stdin = bufio.NewReader(os.Stdin)
+	// remainingBuffer, err := stdin.ReadString('\n')
 }
