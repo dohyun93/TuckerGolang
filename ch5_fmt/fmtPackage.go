@@ -83,6 +83,7 @@ func FmtScanFunctions() {
 	// 추가.
 	// 입력 스트림을 지우기
 	stdin := bufio.NewReader(os.Stdin) // 표준입출력을 읽는 객제
+	//stdin := bufio.NewReader(os.Stdin)
 	n, err := fmt.Scanln(&a, &b)
 
 	if err != nil {
