@@ -4,6 +4,7 @@ import (
 	ch3 "TuckerGolang/ch3_HelloGoWorld"
 	ch4 "TuckerGolang/ch4_Variable"
 	ch5 "TuckerGolang/ch5_fmt"
+	ch6 "TuckerGolang/ch6_operator"
 	"fmt"
 )
 
@@ -11,6 +12,11 @@ func main() {
 	chapter3()
 	chapter4()
 	chapter5()
+	chapter6()
+}
+
+func chapter6() {
+	ch6.Op_example()
 }
 
 func chapter3() {
