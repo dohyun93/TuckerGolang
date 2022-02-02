@@ -5,6 +5,7 @@ import (
 	ch4 "TuckerGolang/ch4_Variable"
 	ch5 "TuckerGolang/ch5_fmt"
 	ch6 "TuckerGolang/ch6_operator"
+	ch7 "TuckerGolang/ch7_function"
 	"fmt"
 )
 
@@ -13,6 +14,11 @@ func main() {
 	chapter4()
 	chapter5()
 	chapter6()
+	chapter7()
+}
+
+func chapter7() {
+	ch7.FunctionExample()
 }
 
 func chapter6() {
