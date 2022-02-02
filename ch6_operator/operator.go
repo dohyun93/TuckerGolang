@@ -36,6 +36,7 @@ func Op_example() {
 
 	//2. 실수 연산에서 오차를 없애는 방법
 	var f1, f2, f3 float64 = 0.1, 0.2, .3
+	fmt.Println("math.Nextafter(a, b) 함수로 float64타입의 a다음으로 b를 향한 표현가능 값을 리턴. 그 값이 목표(b)와 같은지 리턴.")
 	fmt.Printf("%0.18f == %0.18f : %v\n", (f1 + f2), f3, equal((f1+f2), f3))
 
 	// 금융 프로그램이라 더 정확한 수치 계산을 위해서는 아래처럼 math/big 라이브러리의 Float객체를 사용해야 한다.
