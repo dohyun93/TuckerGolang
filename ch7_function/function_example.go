@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-// 함수는 다중 값 반환 가능..
+// 함수는 다중 값 반환 가능....
 
 func totalAvgScore(a, b, c int, d float64) (result float64, bigger bool) {
 	totalSum := a + b + c
