@@ -6,6 +6,7 @@ import (
 	ch5 "TuckerGolang/ch5_fmt"
 	ch6 "TuckerGolang/ch6_operator"
 	ch7 "TuckerGolang/ch7_function"
+	ch8 "TuckerGolang/ch8_const"
 	"fmt"
 )
 
@@ -15,6 +16,11 @@ func main() {
 	chapter5()
 	chapter6()
 	chapter7()
+	chapter8()
+}
+
+func chapter8() {
+	ch8.ConstExample()
 }
 
 func chapter7() {
