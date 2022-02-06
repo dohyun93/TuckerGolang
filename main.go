@@ -1,22 +1,34 @@
 package main
 
 import (
+	ch10 "TuckerGolang/ch10_switch"
 	ch3 "TuckerGolang/ch3_HelloGoWorld"
 	ch4 "TuckerGolang/ch4_Variable"
 	ch5 "TuckerGolang/ch5_fmt"
 	ch6 "TuckerGolang/ch6_operator"
 	ch7 "TuckerGolang/ch7_function"
 	ch8 "TuckerGolang/ch8_const"
+	ch9 "TuckerGolang/ch9_if"
 	"fmt"
 )
 
 func main() {
-	chapter3()
-	chapter4()
-	chapter5()
-	chapter6()
-	chapter7()
-	chapter8()
+	//chapter3()
+	//chapter4()
+	//chapter5()
+	//chapter6()
+	//chapter7()
+	//chapter8()
+	//chapter9()
+	chapter10()
+}
+
+func chapter10() {
+	ch10.SwitchExample()
+}
+
+func chapter9() {
+	ch9.IfExample()
 }
 
 func chapter8() {

@@ -33,11 +33,10 @@ func ConstExample() {
 	// 2. 열거형 (iota)
 	// 일반 정수형 상수선언
 	const (
-		Dog  int = iota // 0부터 시작한다.
-		Cat             // 1증가. -> 1
-		Fish            // 1증가. -> 2
+		Dog  = iota // 0부터 시작한다.
+		Cat         // 1증가. -> 1
+		Fish        // 1증가. -> 2
 	)
-
 	// 비트플래그 상수선언
 	const (
 		Bitflag1 uint = 1 << iota // 1 << 0 -> 1
