@@ -56,7 +56,7 @@ func SwitchExample() {
 		fmt.Println("30대가 다 갔네")
 	}
 
-	// 4. const 열거값과 switch
+	// 4. const 열거값과 switch..
 	// const 열거값 (iota)에 따라 수행되는 로직을 변경할 때 switch문을 주로 사용한다.
 	// 색깔을 나타내는 열거값을 문자열로 바꾸는 함수를 switch문을 사용해서 만들어보자.
 	myFavoriteColor := RED
