@@ -6,6 +6,8 @@ import (
 	ch12 "TuckerGolang/ch12_array"
 	ch13 "TuckerGolang/ch13_struct"
 	ch14 "TuckerGolang/ch14_pointer"
+	ch15 "TuckerGolang/ch15_string"
+	ch16 "TuckerGolang/ch16_package"
 	ch3 "TuckerGolang/ch3_HelloGoWorld"
 	ch4 "TuckerGolang/ch4_Variable"
 	ch5 "TuckerGolang/ch5_fmt"
@@ -28,7 +30,18 @@ func main() {
 	//chapter11()
 	//chapter12()
 	//chapter13()
-	chapter14()
+	//chapter14()
+	//chapter15()
+	//chapter16()
+
+}
+
+func chapter16() {
+	ch16.PackageExample()
+}
+
+func chapter15() {
+	ch15.StringExample()
 }
 
 func chapter14() {
