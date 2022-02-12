@@ -3,6 +3,7 @@ package main
 import (
 	ch10 "TuckerGolang/ch10_switch"
 	ch11 "TuckerGolang/ch11_for"
+	ch12 "TuckerGolang/ch12_array"
 	ch3 "TuckerGolang/ch3_HelloGoWorld"
 	ch4 "TuckerGolang/ch4_Variable"
 	ch5 "TuckerGolang/ch5_fmt"
@@ -22,9 +23,13 @@ func main() {
 	//chapter8()
 	//chapter9()
 	//chapter10()
-	chapter11()
+	//chapter11()
+	chapter12()
 }
 
+func chapter12() {
+	ch12.ArrayExample()
+}
 func chapter11() {
 	ch11.ForExample()
 }
