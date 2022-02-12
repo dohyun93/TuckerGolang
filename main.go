@@ -4,6 +4,7 @@ import (
 	ch10 "TuckerGolang/ch10_switch"
 	ch11 "TuckerGolang/ch11_for"
 	ch12 "TuckerGolang/ch12_array"
+	ch13 "TuckerGolang/ch13_struct"
 	ch3 "TuckerGolang/ch3_HelloGoWorld"
 	ch4 "TuckerGolang/ch4_Variable"
 	ch5 "TuckerGolang/ch5_fmt"
@@ -24,9 +25,13 @@ func main() {
 	//chapter9()
 	//chapter10()
 	//chapter11()
-	chapter12()
+	//chapter12()
+	chapter13()
 }
 
+func chapter13() {
+	ch13.StructExample()
+}
 func chapter12() {
 	ch12.ArrayExample()
 }
