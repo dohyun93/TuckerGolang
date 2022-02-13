@@ -8,6 +8,7 @@ import (
 	ch14 "TuckerGolang/ch14_pointer"
 	ch15 "TuckerGolang/ch15_string"
 	ch16 "TuckerGolang/ch16_package"
+	"TuckerGolang/ch18_slice"
 	ch3 "TuckerGolang/ch3_HelloGoWorld"
 	ch4 "TuckerGolang/ch4_Variable"
 	ch5 "TuckerGolang/ch5_fmt"
@@ -34,9 +35,16 @@ func main() {
 	//chapter14()
 	//chapter15()
 	//chapter16()
-	project1()
+	//project1()
+	chapter18()
 }
 
+func chapter18() {
+	//ch18.SliceExample()
+	//ch18.Slicing()
+	//ch18.SliceCopyAndADDSUB()
+	ch18_slice.SliceSort()
+}
 func project1() {
 	proj1.PickNumberGame()
 }
