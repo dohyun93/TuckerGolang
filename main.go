@@ -15,6 +15,7 @@ import (
 	ch7 "TuckerGolang/ch7_function"
 	ch8 "TuckerGolang/ch8_const"
 	ch9 "TuckerGolang/ch9_if"
+	proj1 "TuckerGolang/project1_pickNumberGame"
 	"fmt"
 )
 
@@ -33,7 +34,11 @@ func main() {
 	//chapter14()
 	//chapter15()
 	//chapter16()
+	project1()
+}
 
+func project1() {
+	proj1.PickNumberGame()
 }
 
 func chapter16() {
