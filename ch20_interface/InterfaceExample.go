@@ -20,6 +20,7 @@ type DuckInterface interface {
 }
 
 type Stringer interface {
+	// Fly() string -> 구현하지 않아 오류남.
 	String() string
 }
 
