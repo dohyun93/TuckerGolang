@@ -10,6 +10,7 @@ import (
 	ch16 "TuckerGolang/ch16_package"
 	ch18 "TuckerGolang/ch18_slice"
 	ch19 "TuckerGolang/ch19_method"
+	ch20 "TuckerGolang/ch20_interface"
 	ch3 "TuckerGolang/ch3_HelloGoWorld"
 	ch4 "TuckerGolang/ch4_Variable"
 	ch5 "TuckerGolang/ch5_fmt"
@@ -38,7 +39,12 @@ func main() {
 	//chapter16()
 	//project1()
 	//chapter18()
-	chapter19()
+	//chapter19()
+	chapter20()
+}
+
+func chapter20() {
+	ch20.InterfaceExample()
 }
 
 func chapter19() {
