@@ -45,6 +45,7 @@ func main() {
 
 func chapter20() {
 	ch20.InterfaceExample()
+	ch20.WhyUseInterfaceExample()
 }
 
 func chapter19() {

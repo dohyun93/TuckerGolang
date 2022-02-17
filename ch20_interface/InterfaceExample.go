@@ -1,6 +1,8 @@
 package ch20_interface
 
 import (
+	fedexpost "TuckerGolang/ch20_1_fedex"
+	koreapost "TuckerGolang/ch20_2_koreapost"
 	"fmt"
 )
 
@@ -19,6 +21,8 @@ type DuckInterface interface {
 	Walk(distance int) int
 }
 
+// Go 에서는 ~er을 붙여서 인터페이스명을 만드는 것을 권장하고 있다.
+// 그래서 String()메서드를 갖는 인터페이스라는 뜻으로 Stringer라고 만들었다.
 type Stringer interface {
 	// Fly() string -> 구현하지 않아 오류남..
 	String() string
@@ -30,6 +34,7 @@ type Student struct {
 }
 
 func (s Student) String() string {
+	// Sprintf는 서식에 따라 문자열을 만들어서 반환하는 함수다.
 	return fmt.Sprintf("안녕! 나는 %d살 %s라고 해", s.Age, s.Name)
 }
 
@@ -37,7 +42,31 @@ func InterfaceExample() {
 	fmt.Println()
 	student := Student{"도현", 30}
 	var stringer Stringer
+	// Student 타입이 String() 메서드를 포함하고 있기 때문에, Stringer 인터페이스의 변수인 stringer에 대입이 가능하다!!
 	stringer = student // interface형에 Student형 대입
 
 	fmt.Printf("%s\n", stringer.String())
+}
+
+// stringer Stringer <- 인터페이스 구현 -- student Student (구조체, String 메서드)
+
+// 인터페이스를 왜 쓰나?
+// 인터페이스는 OOP에서 아주 중요한 역할을 한다. 인터페이스를 이용하면 구체화된 객체가 아닌 인터페이스 만으로도
+// 메서드를 호출할 수 있기 때문에 큰 코드 수정없이 필요에따라 구체화된 객체를 바꿔서 사용할 수 있다.
+// 이렇게 함으로써 변경 요청에 유연하게 대처할 수 있다.
+
+type Sender interface {
+	Send(parcel string)
+}
+
+func SendBook(name string, sender Sender) { // 뒤에 인터페이스로 받아주도록 구현하여 각 구조체 타입으로 넘겨주지 않는 유연함!!
+	sender.Send(name)
+}
+
+func WhyUseInterfaceExample() {
+	koreaPostSender := &koreapost.PostSender{}
+	fedexPostSender := &fedexpost.FedexSender{}
+	//
+	SendBook("어린 왕자", koreaPostSender)
+	SendBook("Young Prince", fedexPostSender)
 }
