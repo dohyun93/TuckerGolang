@@ -47,6 +47,11 @@ func main() {
 
 func chapter21() {
 	ch21.AdvancedFunction()
+	ch21.Step3_FunctionTypeVariable()
+	ch21.Step4_FunctionTypeVariable()
+	ch21.Step4_1_Function_Literal_InternalState()
+	ch21.Capture_FunctionLiteral()
+	ch21.FileHandleInnerState()
 }
 
 func chapter20() {
