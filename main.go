@@ -11,6 +11,7 @@ import (
 	ch18 "TuckerGolang/ch18_slice"
 	ch19 "TuckerGolang/ch19_method"
 	ch20 "TuckerGolang/ch20_interface"
+	ch21 "TuckerGolang/ch21_advancedFunction"
 	ch3 "TuckerGolang/ch3_HelloGoWorld"
 	ch4 "TuckerGolang/ch4_Variable"
 	ch5 "TuckerGolang/ch5_fmt"
@@ -40,7 +41,12 @@ func main() {
 	//project1()
 	//chapter18()
 	//chapter19()
-	chapter20()
+	//chapter20()
+	chapter21()
+}
+
+func chapter21() {
+	ch21.AdvancedFunction()
 }
 
 func chapter20() {
