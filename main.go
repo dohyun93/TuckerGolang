@@ -12,6 +12,7 @@ import (
 	ch19 "TuckerGolang/ch19_method"
 	ch20 "TuckerGolang/ch20_interface"
 	ch21 "TuckerGolang/ch21_advancedFunction"
+	ch22 "TuckerGolang/ch22_datastructure"
 	ch3 "TuckerGolang/ch3_HelloGoWorld"
 	ch4 "TuckerGolang/ch4_Variable"
 	ch5 "TuckerGolang/ch5_fmt"
@@ -42,7 +43,12 @@ func main() {
 	//chapter18()
 	//chapter19()
 	//chapter20()
-	chapter21()
+	//chapter21()
+	chapter22()
+}
+
+func chapter22() {
+	ch22.DataStructure()
 }
 
 func chapter21() {
