@@ -174,7 +174,7 @@ func Map() {
 	fmt.Printf("%s의 나이는 %s살 이고, 키와 몸무게는 각각 %scm, %skg 이다.\n", myMap["이름"], myMap["나이"], myMap["키"], myMap["몸무게"])
 
 	for key, value := range myMap {
-		fmt.Println(key, value) // 정렬되지 않은 값이 출력된다..
+		fmt.Println(key, value) // 정렬되지 않은 값이 출력된다...
 	}
 
 	// 1. map에서 요소 삭제와 없는 요소 확인
