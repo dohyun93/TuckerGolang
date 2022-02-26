@@ -165,7 +165,7 @@ func Ring() {
 }
 
 func Map() {
-	myMap := make(map[string]string) // 맵 생성
+	myMap := make(map[string]string) // 맵 생성.
 	myMap["이름"] = "권도현"
 	myMap["나이"] = "30"
 	myMap["키"] = "187"
