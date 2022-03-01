@@ -13,6 +13,7 @@ import (
 	ch20 "TuckerGolang/ch20_interface"
 	ch21 "TuckerGolang/ch21_advancedFunction"
 	ch22 "TuckerGolang/ch22_datastructure"
+	ch23 "TuckerGolang/ch23_errorHandling"
 	ch3 "TuckerGolang/ch3_HelloGoWorld"
 	ch4 "TuckerGolang/ch4_Variable"
 	ch5 "TuckerGolang/ch5_fmt"
@@ -44,7 +45,12 @@ func main() {
 	//chapter19()
 	//chapter20()
 	//chapter21()
-	chapter22()
+	//chapter22()
+	chapter23()
+}
+
+func chapter23() {
+	ch23.ErrorHandling()
 }
 
 func chapter22() {
