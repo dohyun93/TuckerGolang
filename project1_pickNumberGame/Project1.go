@@ -13,7 +13,7 @@ func InputIntValue() (int, error) {
 	stdin := bufio.NewReader(os.Stdin)
 	_, err := fmt.Scanln(&number) // 한 줄 입력받고
 	if err != nil {
-		stdin.ReadString('\n') // 정수하나 입력아니라 한 줄 내 공백이나 다른 정수아닌 값 입력시, 엔터까지해서 버퍼비우기.
+		stdin.ReadString('\n') // 정수하나 입력아니라 한 줄 내 공백이나 다른 정수아닌 값 입력시, 엔터까지 읽고 버퍼비우기.
 		fmt.Println(err)
 	}
 	return number, err
