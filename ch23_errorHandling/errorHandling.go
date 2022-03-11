@@ -15,7 +15,7 @@ func readFile(filename string) (string, error) {
 	defer file.Close()
 
 	rd := bufio.NewReader(file)
-	line, _ := rd.ReadString('\n') // delim 전까지 읽은 한 줄을 line으로 반환!!@!
+	line, _ := rd.ReadString('\n') // delim 전까지 읽은 한 줄을 line으로 반환!!@!!!
 
 	return line, nil
 }
