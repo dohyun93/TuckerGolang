@@ -53,7 +53,9 @@ func chapter23() {
 	//ch23.ErrorHandling()
 	//ch23.DeveloperError()
 	//ch23.AccountSystem()
-	ch23.ErrorWrappingExample()
+	//ch23.ErrorWrappingExample()
+	//ch23.PanicExample1()
+	ch23.PanicExample2()
 }
 
 func chapter22() {
