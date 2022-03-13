@@ -58,7 +58,7 @@ func f() {
 	// 4. panic 복구
 	// panic이 f까지 전파되었으나, defer를 사용해 함수 종료 전 함수 리터럴이 실행된다.
 	// 함수 리터럴 내부에서 recover()를 사용해 패닉 복구를 시도한다.
-	// 전파중인 panic이 있으므로 복구가 되고 panic 메시지(r)를 출력한다.
+	// 전파중인 panic이 있으므로 복구가 되고 panic 메시지(r)를 출력한다..
 	// recover()는 발생한 panic 객체를 반환해준다.
 	defer func() {
 		if r := recover(); r != nil {
