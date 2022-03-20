@@ -52,7 +52,8 @@ func main() {
 }
 
 func chapter24() {
-	ch24.GoRoutine()
+	//ch24.GoRoutine()
+	ch24.SubGoRoutine()
 }
 
 func chapter23() {
