@@ -55,7 +55,9 @@ func chapter24() {
 	//ch24.GoRoutine()
 	//ch24.SubGoRoutine()
 	//ch24.CautionCuncurrentGoroutines()
-	ch24.MUTEX()
+	//ch24.MUTEX()
+	//ch24.Deadlock()
+	ch24.DivideArea()
 }
 
 func chapter23() {
