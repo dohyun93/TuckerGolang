@@ -2,6 +2,7 @@ package ch24_goroutine
 
 import (
 	"fmt"
+	"time"
 )
 
 func GoRoutine() {
@@ -29,6 +30,25 @@ func GoRoutine() {
 	//    복원하는 '컨텍스트 스위칭'이 발생하며, 적정 개수를 넘어 한 번에 너무 많은 스레드를 수행하게 되면 성능이 저하된다.
 	//    Go 언어는 CPU 코어마다 OS 스레드를 하나만 할당해서 사용하기 때문에, 컨텍스트 스위칭 비용이 발생하지 않는다.
 	// =========================================================================================================
-	fmt.Println()
 
+	// 아래 두 함수는 각기 다른 새로운 고루틴에서 실행되기 때문에 동시에 실행된다.
+	// 단, 코어가 3개 이상 (main포함) 일 경우.
+	go printKorean()
+	go printNumbers()
+	time.Sleep(3 * time.Second) // "메인 루틴이 대기하지 않고 끝나면 생성된 고루틴들은 모두 즉시 종료된다." (중요)
+}
+
+func printKorean() {
+	koreans := []rune{'가', '나', '다', '라', '마', '바', '사'}
+	for _, val := range koreans {
+		time.Sleep(300 * time.Millisecond)
+		fmt.Printf("%c ", val)
+	}
+}
+
+func printNumbers() {
+	for i := 1; i < 6; i++ {
+		time.Sleep(time.Millisecond * 400)
+		fmt.Printf("%d ", i)
+	}
 }
