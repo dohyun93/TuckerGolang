@@ -20,7 +20,7 @@ func ChannelExample() {
 }
 
 func square(wg *sync.WaitGroup, ch chan int) {
-	n := <-ch // 채널 인스턴스 ch에 담긴 데이터를 꺼내 n 변수에 담는다.
+	n := <-ch // 채널 인스턴스 ch에 담긴 데이터를 꺼내 n 변수에 담는다..
 
 	time.Sleep(time.Second)
 	fmt.Printf("Square : %d\n", n*n)
