@@ -7,7 +7,7 @@ import (
 )
 
 func ChannelExample() {
-	// 모든 고루틴들이 종료될 때 까지 대기하는 그룹을 만든다.
+	// 모든 고루틴들이 종료될 때 까지 대기하는 그룹을 만든다..
 	var wg sync.WaitGroup
 	ch := make(chan int) // int 형 데이터를 넣고 뺄 수 있는 채널을 만들었다.
 
