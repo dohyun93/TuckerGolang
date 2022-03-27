@@ -54,7 +54,11 @@ func main() {
 }
 
 func chapter25() {
-	ch25.ChannelExample()
+	//ch25.ChannelExample()
+	//ch25.Size_0_channel()
+	//ch25.WaitDataFromChannel()
+	//ch25.Select_ChannelExample()
+	ch25.TickExample()
 }
 func chapter24() {
 	//ch24.GoRoutine()
