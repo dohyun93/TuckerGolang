@@ -58,7 +58,11 @@ func chapter25() {
 	//ch25.Size_0_channel()
 	//ch25.WaitDataFromChannel()
 	//ch25.Select_ChannelExample()
-	ch25.TickExample()
+	//ch25.TickExample()
+	//ch25.DivideRoleWithChannels()
+
+	//ch25.CancelTaskContext()
+	ch25.ValueContext()
 }
 func chapter24() {
 	//ch24.GoRoutine()
