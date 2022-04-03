@@ -100,3 +100,24 @@ func TypeDefaultValue() {
 	// 0.12345e+05 에서 소수부는 12345 이고 지수부는 5이다.
 	// 소수 표현범위는 소수부의 자리(비트)수가 많을수록 더 넓어진다.
 }
+
+func Int16ToInt8() {
+	// cast vs conversion?
+
+	var Int16 int16 = 1409 // 00000101 10000001 -> int8로 변경 시 좌측의 상위 8bit가 truncate(잘림)됨. signed 데이터타입일 경우
+	// 음수의 값으로 변경됨 (10000001은 -127임. 즉 int16에서 int8로 변경 시 1409에서 -127이 됨.)
+	var Int8 int8 = 1
+
+	fmt.Printf("\n\nInt16 is: %d, and Int8 is: %d\n", Int16, Int8)
+	fmt.Printf("Int16(Type, value: %T, %v)\n", Int16, Int16)
+
+	fmt.Printf("Now, Let's change the Int16 to Int8 and see what happens\n")
+	fmt.Printf("int8(Int16): %d", int8(Int16))
+
+	var Int8_2 int8 = -127 // 10000001
+	var Int16_2 int16      // sign extension. 11111111 10000001
+
+	fmt.Printf("Int8_2 : %d\n", Int8_2)
+	Int16_2 = int16(Int8_2)
+	fmt.Printf("Int8_2 to int16: %d\n", Int16_2) // Int16_2: -127
+}

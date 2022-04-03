@@ -29,7 +29,7 @@ import (
 
 func main() {
 	//chapter3()
-	//chapter4()
+	chapter4()
 	//chapter5()
 	//chapter6()
 	//chapter7()
@@ -50,7 +50,7 @@ func main() {
 	//chapter22()
 	//chapter23()
 	//chapter24()
-	chapter25()
+	//chapter25()
 }
 
 func chapter25() {
@@ -194,6 +194,9 @@ func chapter4() {
 	//uint는 32비트 CPU 컴퓨터는 uint32, 64비트 CPU 컴퓨터는 uint64와 동일
 
 	ch4.TypeDefaultValue()
+
+	fmt.Println("20220403_recap")
+	ch4.Int16ToInt8()
 }
 
 func chapter5() {
