@@ -36,7 +36,7 @@ func StringExample() {
 	fmt.Println(character)        // character값 출력 (int32)
 	fmt.Printf("%c\n", character) // 문자 출력
 
-	// 2. len()으로 문자열 '크기' 알아내기
+	// 2. len()으로 문자열 '크기' 알아내기 -> 문자열을 len 내장함수를 씌우면 '길이가 아니라 크기'를 반환한다.
 	// 참고로, len은 12장에서 배열을 공부할 때, 배열 길이를 리턴하는 기능도 했었다.
 	var korString string = "가나다라마"
 	var enString string = "abcde"
@@ -58,7 +58,7 @@ func StringExample() {
 	runes_ := []rune(str)
 	fmt.Println("문자열을 rune 슬라이스로 변환하여 각 문자의 rune타입 값들 []rune(str): ", runes_)
 	fmt.Println("정수화 된 문자들의 rune타입 슬라이스 길이 len([]rune(str)): ", len(runes_))
-	fmt.Println("원래 문자열의 크기인 len(str): ", len(str))
+	fmt.Println("원래 문자열의 크기인 len(str): ", len(str)) // 문자열이므로 len의 결과는 길이가 아니라 사이즈.
 
 	// [@참고@] string <-> []byte 타입 변환 가능하다. 20장 참고.
 	// 4. 문자열 순회
@@ -107,8 +107,9 @@ func StringExample() {
 	// 없는것과 비교하면 더 크다고 간주한다. (BBA > BB)
 
 	fmt.Printf("yourString2 (%s) > yourString3 (%s) : %v\n", yourString2, yourString3, yourString2 > yourString3)
+	// B가 A보다 더 뒤에 오므로 BB가 BAA보다 더 크다.
 
 	// 중요! - 내장함수 len()
-	// len(문자열): 문자열의 크기
+	// len(문자열): 문자열의 '크기'
 	// len(슬라이스 또는 배열): 슬라이스 또는 배열의 '길이'
 }
