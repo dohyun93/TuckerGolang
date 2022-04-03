@@ -17,7 +17,12 @@ type account struct {
 
 func MethodExample() {
 	fmt.Println()
-	acc := &account{balance: 100}
+	acc := &account{balance: 100} // 선언/초기화 방법 1.
+
+	// 선언/초기화 방법 2
+	//acc := new(account)
+	//acc.balance = 100
+
 	MinusFunction(acc, 20)
 	acc.MinusMethod(20)
 	fmt.Println(acc.balance)
