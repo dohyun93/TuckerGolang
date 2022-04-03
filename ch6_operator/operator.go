@@ -7,7 +7,8 @@ import (
 )
 
 func equal(a, b float64) bool {
-	return math.Nextafter(a, b) == b // 값 비교 (a가 b보다 1비트 작다면 a보다 1비트 큰(==b) 값 리턴.
+	return math.Nextafter(a, b) == b
+	// 값 비교 (a가 b보다 1비트 작다면 a보다 1비트 큰(==b) 값 리턴.
 	// 결국 1bit 작은 값(a)의 입력은 b와의 1bit 오차는 동일하다고 간주하는 것이다.
 }
 
@@ -15,7 +16,7 @@ func Op_example() {
 	// 산술 연산자
 	// - 사칙연산자: +, -, *, /
 	// - 비트연산자: %, &, |, ^(XOR 비트), &^(비트 클리어), <<, >>
-	// >>로 채워지는 비트는 음수의 경우1 로 채워지고, 양수의 경우 0으로 채워진다. <<로 우항에 양의정수만 가능하며, 0으로 채워진다.
+	// >>로 채워지는 비트는 음수의 경우 1 로 채워지고, 양수의 경우 0으로 채워진다. <<로 우항에 양의정수만 가능하며, 0으로 채워진다.
 
 	// 대입 연산자
 	// - ==, !=, <, >, <=, >=
@@ -39,33 +40,55 @@ func Op_example() {
 	fmt.Println("math.Nextafter(a, b) 함수로 float64타입의 a다음으로 b를 향한 표현가능 값을 리턴. 그 값이 목표(b)와 같은지 리턴.")
 	fmt.Printf("%0.18f == %0.18f : %v\n", (f1 + f2), f3, equal((f1+f2), f3))
 
+	ExactFloatValueCalculation()
+
 	// 금융 프로그램이라 더 정확한 수치 계산을 위해서는 아래처럼 math/big 라이브러리의 Float객체를 사용해야 한다.
-	fl1, _ := new(big.Float).SetString("0.1")
-	fl2, _ := new(big.Float).SetString("0.2")
-	fl3, _ := new(big.Float).SetString("0.3")
-
-	fl4 := new(big.Float).Add(fl1, fl2)
-	fmt.Println(fl1, fl2, fl3, fl4)
-
-	// -1 리턴: fl3가 작은경우. 1은 fl4가 큰 경우. 0은 두 값이 같은 경우다.
-	switch fl3.Cmp(fl4) {
-	case 0:
-		fmt.Println(fl3, "와 ", fl4, "는 같다.")
-	case 1:
-		fmt.Println(fl4, "가 ", fl3, "보다 크다.")
-	case -1:
-		fmt.Println(fl3, "가 ", fl4, "보다 작다.")
-	default:
-		fmt.Println("잘못된 입력")
-	}
-
-	// 3. 대입 연산자.
-	// golang은 값 치환을 아래처럼 할 수 있다.
-	fl1, fl2 = fl2, fl1
+	//fl1, _ := new(big.Float).SetString("0.1")
+	//fl2, _ := new(big.Float).SetString("0.2")
+	//fl3, _ := new(big.Float).SetString("0.3")
+	//
+	//fl4 := new(big.Float).Add(fl1, fl2)
+	//fmt.Println(fl1, fl2, fl3, fl4)
+	//
+	//// -1 리턴: fl3가 작은경우. 1은 fl4가 큰 경우. 0은 두 값이 같은 경우다.
+	//switch fl3.Cmp(fl4) {
+	//case 0:
+	//	fmt.Println(fl3, "와 ", fl4, "는 같다.")
+	//case 1:
+	//	fmt.Println(fl3, "가 ", fl4, "보다 크다.")
+	//case -1:
+	//	fmt.Println(fl3, "가 ", fl4, "보다 작다.")
+	//default:
+	//	fmt.Println("잘못된 입력")
+	//}
+	//
+	//// 3. 대입 연산자.
+	//// golang은 값 치환을 아래처럼 할 수 있다.
+	//fl1, fl2 = fl2, fl1
 
 	// 정리.
 	// 산술 연산자는 사칙연산과 비트연산 (특히 ^(XOR), &^(bit clear)), 시프트 연산이 있다.
 	// 정수 타입으로 계산을 할 때는 해당 타입의 오버/언어 플로를 염두해야 한다.
 	// 실수 타입은 math/big의 Float객체를 사용하는 것이 높은 정확도의 계산을 위해서 올바르다.
 	// 복합 대입연산을 통해 한 줄로 간편하게 여러 변수에 값을 할당할 수 있다.
+}
+
+func ExactFloatValueCalculation() {
+	myF1, _ := new(big.Float).SetString("0.1")
+	myF2, _ := new(big.Float).SetString("0.2")
+	myF3, _ := new(big.Float).SetString("0.4")
+
+	myF4 := new(big.Float).Add(myF1, myF2)
+
+	fmt.Println("myF1~3: ", myF1, myF2, myF3)
+	fmt.Println("myF4: ", myF4)
+
+	switch myF3.Cmp(myF4) {
+	case 0:
+		fmt.Println("same")
+	case 1:
+		fmt.Println("myF3 is bigger than myF4")
+	case -1:
+		fmt.Println("myF3 is smaller than myF4")
+	}
 }

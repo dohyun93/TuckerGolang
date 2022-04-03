@@ -29,9 +29,9 @@ import (
 
 func main() {
 	//chapter3()
-	chapter4()
+	//chapter4()
 	//chapter5()
-	//chapter6()
+	chapter6()
 	//chapter7()
 	//chapter8()
 	//chapter9()
