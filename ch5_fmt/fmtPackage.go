@@ -53,7 +53,7 @@ func FmtPrintFunctions() {
 }
 
 func FmtScanFunctions() {
-	// 1. fmt.Scan()
+	// 1. fmt.Scan() -> 공백(space)과 개행을 기준으로 입력받는다.
 	var a, b int
 	n1, err1 := fmt.Scan(&a, &b) // space나 enter로 각 변수 입력을 구분지음.
 	if err1 != nil {
@@ -63,7 +63,7 @@ func FmtScanFunctions() {
 	}
 
 	// 2. fmt.Scanln()
-	// '한 줄'로 입력받아서 인수로 들어온 변수 메모리 주소에 값을 채워준다.
+	// '한 줄'로 입력받아서 인수로 들어온 변수 메모리 주소에 값을 채워준다. 즉 공백을 기준으로 값을 받는다.
 	n2, err2 := fmt.Scanln(&a, &b)
 	if err2 != nil {
 		fmt.Println(n2, err2)
@@ -80,9 +80,9 @@ func FmtScanFunctions() {
 		fmt.Println(a, b)
 	}
 
-	// 추가.........
+	// 추가
 	// 입력 스트림을 지우기
-	stdin := bufio.NewReader(os.Stdin) // 표준입출력을 읽는 객제
+	stdin := bufio.NewReader(os.Stdin)
 	//stdin := bufio.NewReader(os.Stdin)
 	n, err := fmt.Scanln(&a, &b)
 
