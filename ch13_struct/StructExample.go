@@ -60,7 +60,7 @@ func StructExample() {
 
 	// 2. 필드 배치 순서에 따른 구조체 크기 변화
 	user := User{Score: 100.0, Age: 30} // Score: float64(8bytes), Age: int32(4bytes)
-	fmt.Println(unsafe.Sizeof(user))    // 12가 아니라 16.
+	fmt.Println(unsafe.Sizeof(user))    // 12가 아니라 16 바이트.
 	// '메모리 정렬'?
 	// 컴퓨터가 데이터에 효과적으로 접근하고자 메모리를 일정 크기 간격으로 정렬하는 것을 말한다.
 	// 실제 데이터가 연산되는 CPU 내 레지스터가 8바이트인 컴퓨터를 64비트 컴퓨터라고 하는데,

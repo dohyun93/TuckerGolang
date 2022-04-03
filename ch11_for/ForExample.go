@@ -51,7 +51,7 @@ func ForExample() {
 		_, err := fmt.Scanln(&number)
 		if err != nil {
 			fmt.Println("숫자를 입력하세요.")
-			_, err2 := stdin.ReadString('\n') // 한줄 입력\n -> 버퍼를 비우기.
+			_, err2 := stdin.ReadString('\n') // 한줄 입력 \n -> 버퍼를 비우기.
 			if err2 != nil {
 				fmt.Println("something went wrong in go source.\n")
 			}
