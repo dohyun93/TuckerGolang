@@ -87,12 +87,13 @@ func MethodVSFunction() {
 
 	// ptrVar의 값을 valRec2로 넘겨주고 리턴한 걸 valVar에 복사.
 	// valVar, valRec2, ptrVar 모두 다른 메모리 주소를 갖는 인스턴스다.
-	// (*ptrVar).Multi~ 로 내부적으로 값 타입으로 바꿔서 호출한다.
+
+	// (*ptrVar).Multi~ 처럼 내부적으로 '값 타입'으로 바꿔서 호출한다.
 	var valVar account = ptrVar.MultiplyFunctionReturn(2)
 	fmt.Println(valVar.balance)
 
-	// (&valVar).Multi~ 로 내부적으로 포인터 타입으로 바꿔서 호출한다.
-	// 따라서 valVar과 ptrRec 리시버 변수는 동일한 객체를 가리키는 인스턴스다.
+	// (&valVar).Multi~ 처럼 내부적으로 '포인터 타입'으로 바꿔서 호출한다.
+	// 따라서 valVar과 ptrRec 리시버 변수는 '동일한' 객체를 가리키는 인스턴스다.
 	valVar.MultiplyMethod(2)
 	fmt.Println(valVar.balance)
 }
