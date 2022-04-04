@@ -76,7 +76,7 @@ func (valRec2 account) MultiplyFunctionReturn(value int) account {
 
 func MethodVSFunction() {
 	var ptrVar *account = &account{balance: 800}
-	// ptrVar과 ptrRec는 동일한 인스턴스를 가리킨다.
+	// ptrVar과 ptrRec는 동일한 인스턴스를 가리킨다..
 	ptrVar.MultiplyMethod(2)
 	fmt.Println(ptrVar.balance)
 
