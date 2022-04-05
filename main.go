@@ -43,8 +43,8 @@ func main() {
 	//chapter15()
 	//chapter16()
 	//project1()
-	//chapter18()
-	chapter19()
+	chapter18()
+	//chapter19()
 	//chapter20()
 	//chapter21()
 	//chapter22()
@@ -109,7 +109,8 @@ func chapter18() {
 	//ch18.SliceExample()
 	//ch18.Slicing()
 	//ch18.SliceCopyAndADDSUB()
-	ch18.SliceSort()
+	// ch18.SliceSort()
+	ch18.SliceRecap()
 }
 func project1() {
 	proj1.PickNumberGame()

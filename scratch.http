@@ -1,0 +1,13 @@
+GET http://localhost:80/api/item?id=99
+Accept: application/json
+
+###
+###
+# another comment
+## second comment
+Method Request-URI HTTP-Version
+Header-field: Header-value
+
+Request-Body
+
+GET http://{{host}}:8080
