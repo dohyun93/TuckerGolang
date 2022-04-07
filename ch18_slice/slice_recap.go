@@ -11,7 +11,7 @@ func SliceRecap() {
 		fmt.Printf("%c ", val)
 	}
 
-	myString = string(myRunes) //
+	myString = string(myRunes) ////
 	fmt.Println("\nstringed myRunes: ", myString)
 
 	// 기본값 0으로 출력됨.
