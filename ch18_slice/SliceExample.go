@@ -5,6 +5,8 @@ import (
 	"sort"
 )
 
+// will master on 13th, Apr!
+
 func SliceExample() {
 	fmt.Println()
 	// recap - len() //
