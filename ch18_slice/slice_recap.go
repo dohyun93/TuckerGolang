@@ -17,4 +17,10 @@ func SliceRecap() {
 	fmt.Println("myString length: len(myString)", len(myString))
 	myString2 := "hello권"
 	fmt.Println("myString2 length: len(myString2)", len(myString2))
+
+	mySlice := make([]int, 3)
+	for idx, _ := range mySlice {
+		mySlice[idx] = idx
+		fmt.Println(mySlice[idx])
+	}
 }
