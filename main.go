@@ -24,6 +24,7 @@ import (
 	ch8 "TuckerGolang/ch8_const"
 	ch9 "TuckerGolang/ch9_if"
 	proj1 "TuckerGolang/project1_pickNumberGame"
+	proj2 "TuckerGolang/project2_wordSearchProgram"
 	"fmt"
 )
 
@@ -43,7 +44,7 @@ func main() {
 	//chapter15()
 	//chapter16()
 	//project1()
-	chapter18()
+	//chapter18()
 	//chapter19()
 	//chapter20()
 	//chapter21()
@@ -51,6 +52,11 @@ func main() {
 	//chapter23()
 	//chapter24()
 	//chapter25()
+	project2()
+}
+
+func project2() {
+	proj2.Proj2()
 }
 
 func chapter25() {
