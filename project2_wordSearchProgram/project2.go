@@ -42,7 +42,7 @@ func PrintAllFiles(filesRegExpressions []string) {
 //찾으려는 단어:  main
 //찾으려는 파일 리스트
 //1 .  go.mod
-// // go env GOOS=linux GOARCH=arm64 go build -v main.go
+// // go env GOOS=linux GOARCH=amd64 go build -v main.go
 //
 //
 //
