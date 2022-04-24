@@ -2,48 +2,43 @@ package project2_wordSearchProgram
 
 import (
 	"fmt"
-	"os"
+	"os" // 프로그램 실행 인자로 주어지는 값들 확인 (os.Args)위함.
 	"path/filepath"
 )
 
 func Proj2() {
 	if len(os.Args) < 3 {
-		fmt.Println("명령, 단어, 파일이름 세 개의 인수를 입력하세요. e.g., find apple filepath")
+		fmt.Println("최소 3개 이상의 인자를 전달해야 합니다. (명령, 찾을이름, 디렉토리패턴(들))")
 		return
 	}
 
 	word := os.Args[1]
-	filesRegExpressions := os.Args[2:]
-
-	fmt.Println("찾으려는 단어: ", word)
-	PrintAllFiles(filesRegExpressions)
+	directoryPatterns := os.Args[2:]
+	PrintAllFiles(directoryPatterns, word)
 }
 
-func GetFileList(path string) ([]string, error) {
-	return filepath.Glob(path) // path/filepath 라이브러리로 인자 path에 포함되는 파일이름 목록을 가져올 수 있다.
+// directory 패턴을 받아서 해당하는 파일들의 이름을 반환한다.
+func GetFileList(directoryPattern string) ([]string, error) {
+	return filepath.Glob(directoryPattern)
 }
 
-func PrintAllFiles(filesRegExpressions []string) {
-	for _, fileReg := range filesRegExpressions {
-		fileList, err := GetFileList(fileReg)
+// word가 들어간 파일들의 이름을 모두 출력한다.
+func PrintAllFiles(directoryPatterns []string, word string) {
+	for idx, directoryPattern := range directoryPatterns {
+		fileList, err := GetFileList(directoryPattern)
+		fmt.Println(idx+1, "번째 패턴 ", directoryPattern, "탐색 시작..")
 		if err != nil {
-			fmt.Println("파일을 찾을 수 없다. err: ", err)
-			return
+			fmt.Println("패턴에 대응되는 파일들을 찾을 수 없습니다.")
 		}
-		fmt.Println("찾으려는 파일 리스트")
-		for idx, name := range fileList {
-			fmt.Println(idx+1, ". ", name)
+		// 찾으려는 파일 이름 리스트 출력
+		fmt.Println(word, " 키워드가 포함되는 파일(디렉토리)들 이름 출력.")
+		for _, fileName := range fileList {
+			fmt.Println(fileName)
 		}
+		fmt.Println("=================================")
 	}
 }
 
-//Family@DESKTOP-D4RAK17 MINGW64 /c/Go/src/TuckerGolang (main)
-//$ ./TuckerGolang.exe main go*
-//찾으려는 단어:  main
-//찾으려는 파일 리스트
-//1 .  go.mod
-// // go env GOOS=linux GOARCH=amd64 go build -v main.go
-//
-//
-//
-//
+// 현재 버전은 word를 갖고 어떤 처리를 안한다.
+// ./TuckerGolang word ch* proj* 를 하면
+// word 상관없이 ch로 시작하거나 proj로 시작하는 파일(경로)이름을 출력한다.

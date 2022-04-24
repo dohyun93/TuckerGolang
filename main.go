@@ -10,12 +10,14 @@ import (
 	ch16 "TuckerGolang/ch16_package"
 	ch18 "TuckerGolang/ch18_slice"
 	ch19 "TuckerGolang/ch19_method"
+	ch1 "TuckerGolang/ch1_ComputerArchitecture"
 	ch20 "TuckerGolang/ch20_interface"
 	ch21 "TuckerGolang/ch21_advancedFunction"
 	ch22 "TuckerGolang/ch22_datastructure"
 	ch23 "TuckerGolang/ch23_errorHandling"
 	ch24 "TuckerGolang/ch24_goroutine"
 	ch25 "TuckerGolang/ch25_channer_context"
+	ch2 "TuckerGolang/ch2_ProgrammingLanguage"
 	ch3 "TuckerGolang/ch3_HelloGoWorld"
 	ch4 "TuckerGolang/ch4_Variable"
 	ch5 "TuckerGolang/ch5_fmt"
@@ -29,6 +31,8 @@ import (
 )
 
 func main() {
+	//chatper1()
+	//chapter2()
 	//chapter3()
 	//chapter4()
 	//chapter5()
@@ -204,6 +208,14 @@ func chapter4() {
 
 	fmt.Println("20220403_recap")
 	ch4.Int16ToInt8()
+}
+
+func chapter1() {
+	ch1.Chapter1()
+}
+
+func chapter2() {
+	ch2.Chapter2()
 }
 
 func chapter5() {
