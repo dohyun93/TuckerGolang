@@ -1,9 +1,10 @@
 package project2_wordSearchProgram
 
 import (
+	"bufio"
 	"fmt"
-	"os" // 프로그램 실행 인자로 주어지는 값들 확인 (os.Args)위함.
-	"path/filepath"
+	"os"            // 프로그램 실행 인자로 주어지는 값들 확인 (os.Args)위함.
+	"path/filepath" // 경로명(들)을 출력하기 위함.
 )
 
 func Proj2() {
@@ -42,5 +43,19 @@ func PrintAllFiles(directoryPatterns []string, word string) {
 // 현재 버전은 word를 갖고 어떤 처리를 안한다.
 // ./TuckerGolang word ch* proj* 를 하면
 // word 상관없이 ch로 시작하거나 proj로 시작하는 파일(경로)이름을 출력한다.
-//
-//
+
+// 이제 파일목록들은 출력하니, 그 파일을 실제로 읽어서 한 줄씩 읽어보자.
+
+func PrintFile(filename string) {
+	file, err := os.Open(filename)
+	if err != nil {
+		fmt.Println("파일을 열 수 없습니다.")
+		return
+	}
+	defer file.Close() // 함수 종료 전 반드시 파일 닫아주기.
+
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		fmt.Println(scanner.Text()) // 한 줄씩 읽기.
+	}
+}
