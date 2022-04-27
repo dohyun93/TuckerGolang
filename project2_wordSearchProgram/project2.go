@@ -5,7 +5,20 @@ import (
 	"fmt"
 	"os"            // 프로그램 실행 인자로 주어지는 값들 확인 (os.Args)위함.
 	"path/filepath" // 경로명(들)을 출력하기 위함.
+	"strings"
 )
+
+// 찾은 라인의 정보
+type LineInfo struct {
+	lineNo int
+	line   string
+}
+
+// 파일 내 라인 정보
+type FindInfo struct {
+	fileName string
+	lines    []LineInfo
+}
 
 func Proj2() {
 	if len(os.Args) < 3 {
@@ -15,7 +28,58 @@ func Proj2() {
 
 	word := os.Args[1]
 	directoryPatterns := os.Args[2:]
-	PrintAllFiles(directoryPatterns, word)
+	// PrintAllFiles(directoryPatterns, word)
+	findInfos := []FindInfo{}
+
+	// 인자로 주어진 각 패턴의 경로에 대해 word 찾기.
+	for _, pathPattern := range directoryPatterns {
+		findInfos = append(findInfos, FindWordInAllFiles(word, pathPattern)...)
+	}
+	for _, findInfo := range findInfos {
+		fmt.Println(findInfo.fileName)
+		fmt.Println("==================================")
+		for _, lineInfo := range findInfo.lines {
+			fmt.Println("\t", lineInfo.lineNo, "\t", lineInfo.line)
+		}
+		fmt.Println("==================================")
+		fmt.Println()
+	}
+}
+
+func FindWordInAllFiles(word, pathPattern string) []FindInfo {
+	findInfos := []FindInfo{}
+	fileList, err := GetFileList(pathPattern)
+	if err != nil {
+		fmt.Println("파일을 찾을 수 없습니다. err: ", err)
+		return findInfos
+	}
+
+	for _, fileName := range fileList {
+		findInfos = append(findInfos, FindWordInFile(word, fileName))
+
+	}
+	return findInfos
+}
+
+func FindWordInFile(word, fileName string) FindInfo {
+	findInfo := FindInfo{fileName, []LineInfo{}}
+	file, err := os.Open(fileName)
+	if err != nil {
+		fmt.Println("파일을 찾을 수 없습니다. err: ", err)
+		return findInfo
+	}
+	defer file.Close()
+
+	lineNo := 1
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		line := scanner.Text()
+		if strings.Contains(line, word) {
+			findInfo.lines = append(findInfo.lines, LineInfo{lineNo, line})
+		}
+		lineNo += 1
+	}
+	return findInfo
 }
 
 // directory 패턴을 받아서 해당하는 파일들의 이름을 반환한다.
