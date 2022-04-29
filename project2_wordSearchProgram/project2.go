@@ -42,7 +42,7 @@ func Proj2() {
 			fmt.Println("\t", lineInfo.lineNo, "\t", lineInfo.line)
 		}
 		fmt.Println("==================================")
-		fmt.Println()
+		fmt.Println() //
 	}
 }
 
