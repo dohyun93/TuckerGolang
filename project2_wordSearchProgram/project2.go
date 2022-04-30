@@ -8,16 +8,18 @@ import (
 	"strings"
 )
 
-// 찾은 라인의 정보
-type LineInfo struct {
+// 모든 파일들을 읽음. -> 2) append 필요
+// 	한 파일 내에서 찾기 -> 1) append 필요
+
+// 한 파일 내에서 찾은 라인 수, 라인정보. -> 한 파일 내에서 append해 나간 다음 FilesInfo.LineInfos에 append.
+type aFileLineInfo struct {
 	lineNo int
 	line   string
 }
 
-// 파일 내 라인 정보
-type FindInfo struct {
-	fileName string
-	lines    []LineInfo
+type findInfo struct {
+	fileName  string
+	LineInfos []aFileLineInfo
 }
 
 func Proj2() {
@@ -29,44 +31,46 @@ func Proj2() {
 	word := os.Args[1]
 	directoryPatterns := os.Args[2:]
 	// PrintAllFiles(directoryPatterns, word)
-	findInfos := []FindInfo{}
 
 	// 인자로 주어진 각 패턴의 경로에 대해 word 찾기.
-	for _, pathPattern := range directoryPatterns {
-		findInfos = append(findInfos, FindWordInAllFiles(word, pathPattern)...)
+	// 1. 파일 하나에서 정보 찾기 - v
+	// 2. 파일 리스트에서 위 1번 반복해서 정보 append하기.
+	foundInfos := []findInfo{}
+	// 각 파일 순회하면서 정보 출력
+	for _, dirPattern := range directoryPatterns {
+		foundInfos = append(foundInfos, getFoundInfoFromPatterns(word, dirPattern)...)
 	}
-	for _, findInfo := range findInfos {
-		fmt.Println(findInfo.fileName)
-		fmt.Println("==================================")
-		for _, lineInfo := range findInfo.lines {
-			fmt.Println("\t", lineInfo.lineNo, "\t", lineInfo.line)
+	for _, foundInfo := range foundInfos {
+		fmt.Println(foundInfo.fileName, "에서 찾은 ", word, "정보 출력!")
+		fmt.Println("==========================================")
+		for _, Line := range foundInfo.LineInfos {
+			fmt.Println("\t", Line.lineNo, ": \t", Line.line)
 		}
-		fmt.Println("==================================")
-		fmt.Println() //
+		fmt.Println("==========================================")
+		fmt.Println()
 	}
 }
 
-func FindWordInAllFiles(word, pathPattern string) []FindInfo {
-	findInfos := []FindInfo{}
-	fileList, err := GetFileList(pathPattern)
+// dirpattern에 해당하는 파일들의 findInfo 슬라이스를 만들고, 최종적으로 41라인에서 ...을 통해 내부 요소들만 갖다가 append시켜준다.
+func getFoundInfoFromPatterns(word, dirPattern string) []findInfo {
+	findInfosFromPattern := []findInfo{}
+	fileNameLists, err := GetFileList(dirPattern)
 	if err != nil {
-		fmt.Println("파일을 찾을 수 없습니다. err: ", err)
-		return findInfos
+		fmt.Println("패턴에 대응되는 파일들을 가져오는데 실패했습니다.")
+		return findInfosFromPattern
 	}
-
-	for _, fileName := range fileList {
-		findInfos = append(findInfos, FindWordInFile(word, fileName))
-
+	for _, fileName := range fileNameLists {
+		findInfosFromPattern = append(findInfosFromPattern, findWordInFile(word, fileName))
 	}
-	return findInfos
+	return findInfosFromPattern
 }
 
-func FindWordInFile(word, fileName string) FindInfo {
-	findInfo := FindInfo{fileName, []LineInfo{}}
-	file, err := os.Open(fileName)
+func findWordInFile(word, filename string) findInfo {
+	FoundInfo := findInfo{filename, []aFileLineInfo{}}
+	file, err := os.Open(filename)
 	if err != nil {
-		fmt.Println("파일을 찾을 수 없습니다. err: ", err)
-		return findInfo
+		fmt.Println("파일을 열 수 없습니다.")
+		return FoundInfo
 	}
 	defer file.Close()
 
@@ -75,11 +79,11 @@ func FindWordInFile(word, fileName string) FindInfo {
 	for scanner.Scan() {
 		line := scanner.Text()
 		if strings.Contains(line, word) {
-			findInfo.lines = append(findInfo.lines, LineInfo{lineNo, line})
+			FoundInfo.LineInfos = append(FoundInfo.LineInfos, aFileLineInfo{lineNo, line})
 		}
 		lineNo += 1
 	}
-	return findInfo
+	return FoundInfo
 }
 
 // directory 패턴을 받아서 해당하는 파일들의 이름을 반환한다.
