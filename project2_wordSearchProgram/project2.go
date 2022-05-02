@@ -111,7 +111,7 @@ func PrintAllFiles(directoryPatterns []string, word string) {
 // 현재 버전은 word를 갖고 어떤 처리를 안한다.
 // ./TuckerGolang word ch* proj* 를 하면
 // word 상관없이 ch로 시작하거나 proj로 시작하는 파일(경로)이름을 출력한다.
-//
+////
 // 이제 파일목록들은 출력하니, 그 파일을 실제로 읽어서 한 줄씩 읽어보자.
 
 func PrintFile(filename string) {
