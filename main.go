@@ -50,13 +50,13 @@ func main() {
 	//project1()
 	//chapter18()
 	//chapter19()
-	//chapter20()
+	chapter20()
 	//chapter21()
 	//chapter22()
 	//chapter23()
 	//chapter24()
 	//chapter25()
-	project2()
+	//project2()
 }
 
 func project2() {
@@ -107,7 +107,7 @@ func chapter21() {
 
 func chapter20() {
 	ch20.InterfaceExample()
-	ch20.WhyUseInterfaceExample()
+	//ch20.WhyUseInterfaceExample()
 }
 
 func chapter19() {

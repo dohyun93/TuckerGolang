@@ -30,6 +30,7 @@ type DuckInterface interface {
 type Stringer interface {
 	// Fly() string -> 구현하지 않아 오류남..
 	String() string
+	String2() string
 }
 
 type Student struct {
@@ -42,6 +43,14 @@ func (s Student) String() string {
 	return fmt.Sprintf("안녕! 나는 %d살 %s라고 해", s.Age, s.Name)
 }
 
+// 인터페이스를 구성하는 메서드를 미구현시 아래 에러문구 확인됨 (59 line)
+// student'(타입 Student)을(를) 타입 Stringer(으)로 사용할 수 없습니다.
+// 일부 메서드가 누락되어 타입이 'Stringer'을(를) 구현하지 않습니다. String2() string
+
+func (s Student) String2() string {
+	return fmt.Sprintf("오늘 날씨 참 좋다! 오늘은 5월 %d일이다", 8)
+}
+
 func InterfaceExample() {
 	fmt.Println()
 	student := Student{"도현", 30}
@@ -50,6 +59,7 @@ func InterfaceExample() {
 	stringer = student // interface형에 Student형 대입
 
 	fmt.Printf("%s\n", stringer.String())
+	fmt.Printf("%s\n", stringer.String2())
 }
 
 // stringer Stringer <- 인터페이스 구현 -- student Student (구조체, String 메서드)
