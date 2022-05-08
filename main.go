@@ -106,8 +106,10 @@ func chapter21() {
 }
 
 func chapter20() {
-	ch20.InterfaceExample()
+	//ch20.InterfaceExample()
 	//ch20.WhyUseInterfaceExample()
+
+	ch20.InterfaceTypeAssertionExample()
 }
 
 func chapter19() {

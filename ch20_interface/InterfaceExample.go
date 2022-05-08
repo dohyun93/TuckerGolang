@@ -76,6 +76,7 @@ func InterfaceExample() {
 
 // 다시 정리하면 추상화는 내부 동작을 감춰서 호출하는 쪽과 서비스를 제공하는 쪽 모두에게 자유를 주는 방식이다.
 // 인터페이스는 이런 추상화를 제공하는 추상화 계층(abstraction layer)이다.
+// 서비스를 제공하는, 제공받는 쪽 모두 서로 구현에 신경쓰지 않고 추상화된 관계(interface)를 중심으로 코딩할 수 있다.
 
 // 추상화는 구현에 대한 구체적인 내용은 파악하지 않아도 호출하는 주체가 기능을 사용할 수 있도록 하여 유연성을 높이는 특성이다.
 // 인터페이스는 호출하는 주체와 서비스를 제공하는 주체를 추상화된 관계로 서로를 이어주는 역할을 한다.
@@ -106,7 +107,7 @@ func WhyUseInterfaceExample() {
 // 3. 인터페이스 기본값
 
 // 구조체에서 다른 구조체의 필드를 가질 수 있듯 인터페이스도 다른 인터페이스를 포함할 수 있다.
-// 이를 포함된 인터페이스라 한다.
+// 이를 '포함된 인터페이스'라 한다.
 
 // [1] 포함된 인터페이스
 type Reader interface {
@@ -143,7 +144,7 @@ func PrintVal(v interface{}) {
 
 }
 
-// [3] 인터페이스 기본값 nil
+// [3] 인터페이스 기본값 : nil
 // 인터페이스 변수의 기본값은 유효하지 않은 메모리 주소를 나타내는 nil이다.
 type Strong interface {
 	PrintMyValue() error
@@ -180,9 +181,8 @@ func PrintAge(stringer Stringerr) {
 	// Stringer 변수 stringer는 메서드 String()만 포함하고 있기 때문에, Age값에 접근할 수 없다.!!
 	// 따라서 인터페이스를 구조체 포인터 타입으로 명시적 형 변환을 해준 뒤, 값을 조회할 수 있다.!!
 
-	s := stringer.(*Studentt)
-	// interface변수.(ConcreteType)을 하면 인터페이스 변수를 ConcreteType으로 변환하고
-	// 이를 다시 선언대입문으로 변수에 할당할 수 있다.
+	var s = stringer.(*Studentt) // interface변수.(ConcreteType)을 하면 인터페이스 변수를 ConcreteType으로 변환하고
+	// 이를 다시 대입문으로 변수에 할당할 수 있다.
 
 	fmt.Printf("Age: %d\n", s.Age)
 
@@ -247,3 +247,42 @@ func (d *Dohyun) Read() {
 // 4. 인터페이스를 사용해 추상화 계층을 만들고 관계를 통한 서비스 사용자/제공자의 상호작용을 정의한다.
 // 5. 모든 타입이 빈 인터페이스 변숫값(interface{})으로 쓰일 수 있다.
 // 6. 인터페이스 변환을 사용하면 인터페이스 변수를 구체화된 타입이나 다른 인터페이스로 변경할 수 있다.
+
+type PersonalInfo interface {
+	PersonalInfoer() string
+}
+
+type Person struct {
+	name string
+	age  int
+}
+
+func (s Person) PersonalInfoer() string { // 리스너는 호출하는 객체의 특성에 대한 부분이므로 아래 type assertion과는 무관.
+	return fmt.Sprintf("[Personal Info] Name: %s, age: %d", s.name, s.age)
+}
+
+func typeChangePrintPersonalInfo(personInterface PersonalInfo) {
+	// 인터페이스로 받을 때 메서드를 구현한 타입의 포인터 형이던 그 타입이던 받을 수 있다.
+	// 다만 타입 assertion시 받은 타입에 대응되게 해주어야 한다.
+	fmt.Println("주소, 값: ", &personInterface, " ", personInterface)
+	person := personInterface.(*Person)
+	fmt.Println("주소, 값: ", &person, " ", person)
+
+	fmt.Println("전달된 인자의 형 변환 결과 정보 출력: ", person.name, "씨의 나이는: ", person.age)
+	person.name = "향원"
+	person.age = 31
+}
+
+func InterfaceTypeAssertionExample() {
+	var s = &Person{name: "dohyun", age: 30}
+	fmt.Println("s의 주소, 값: ", &s, " ", s)
+	typeChangePrintPersonalInfo(s)
+	// &로 넘겨줬을때
+	//주소, 값:  0xc000104370   &{dohyun 30}
+	//주소, 값:  0xc000154020   &{dohyun 30}
+
+	// 값으로 넘겨줬을때
+	//주소, 값:  0xc00003e380   {dohyun 30}
+	//주소, 값:  &{dohyun 30}   {dohyun 30}
+	fmt.Println("[종료] s정보: ", s.name, "씨의 나이는 ", s.age)
+}
