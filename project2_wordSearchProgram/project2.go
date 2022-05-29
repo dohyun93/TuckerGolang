@@ -38,7 +38,8 @@ func Proj2() {
 	foundInfos := []findInfo{}
 	// 각 파일 순회하면서 정보 출력
 	for _, dirPattern := range directoryPatterns {
-		foundInfos = append(foundInfos, getFoundInfoFromPatterns(word, dirPattern)...)
+		// foundInfos = append(foundInfos, getFoundInfoFromPatterns(word, dirPattern)...)
+		foundInfos = append(foundInfos, getFoundInfoGoRoutine(word, dirPattern)...)
 	}
 	for _, foundInfo := range foundInfos {
 		fmt.Println(foundInfo.fileName, "에서 찾은 ", word, "정보 출력!")
@@ -49,6 +50,58 @@ func Proj2() {
 		fmt.Println("==========================================")
 		fmt.Println()
 	}
+}
+
+// getFoundInfoFromPatterns 개선버전 -> Go routine 활용
+func getFoundInfoGoRoutine(word, dirPattern string) []findInfo {
+	findInfos := []findInfo{}
+	filesList, err := GetFileList(dirPattern)
+	if err != nil {
+		fmt.Println("파일 리스트를 가져오는데 실패했습니다.")
+		return findInfos
+	}
+
+	channel := make(chan findInfo)
+	cnt := len(filesList)
+	recvCnt := 0
+
+	for _, filename := range filesList {
+		go findWordInFileGoChannel(word, filename, channel) // 고루틴 실행.
+	}
+
+	for findInfo := range channel {
+		findInfos = append(findInfos, findInfo) // 결과 수집.
+
+		recvCnt++           // 채널이 받은 수
+		if recvCnt == cnt { // 채널받은 수와 채널 개수가 일치 (전체 고루틴 응답받은 경우)하면 종료.
+			break
+		}
+	}
+	return findInfos
+}
+
+// findWordInFile 개선버전 -> Go 채널 활용
+func findWordInFileGoChannel(word, filename string, channel chan findInfo) {
+	findInfo := findInfo{filename, []aFileLineInfo{}}
+	file, err := os.Open(filename)
+	if err != nil {
+		fmt.Printf("%s을 열 수 없습니다. %v", filename, err)
+		channel <- findInfo
+		return
+	}
+	defer file.Close()
+
+	lineNo := 1
+
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		line := scanner.Text()
+		if strings.Contains(line, word) {
+			findInfo.LineInfos = append(findInfo.LineInfos, aFileLineInfo{lineNo, line})
+		}
+		lineNo++
+	}
+	channel <- findInfo // 채널에 결과 전송.
 }
 
 // dirpattern에 해당하는 파일들의 findInfo 슬라이스를 만들고, 최종적으로 41라인에서 ...을 통해 내부 요소들만 갖다가 append시켜준다.
@@ -65,6 +118,7 @@ func getFoundInfoFromPatterns(word, dirPattern string) []findInfo {
 	return findInfosFromPattern
 }
 
+// 파일에서 word를 찾아 정보를 리턴한다.
 func findWordInFile(word, filename string) findInfo {
 	FoundInfo := findInfo{filename, []aFileLineInfo{}}
 	file, err := os.Open(filename)
