@@ -52,7 +52,7 @@ func Proj2() {
 	}
 }
 
-// getFoundInfoFromPatterns 개선버전 -> Go routine 활용
+// getFoundInfoFromPatterns 개선버전 -> Go routine 활용!
 func getFoundInfoGoRoutine(word, dirPattern string) []findInfo {
 	findInfos := []findInfo{}
 	filesList, err := GetFileList(dirPattern)
