@@ -34,7 +34,7 @@ func Proj2() {
 
 	// 인자로 주어진 각 패턴의 경로에 대해 word 찾기.
 	// 1. 파일 하나에서 정보 찾기 - v
-	// 2. 파일 리스트에서 위 1번 반복해서 정보 append하기.
+	// 2. 파일 리스트에서 위 1번 반복해서 정보 append하기.jhlkjl
 	foundInfos := []findInfo{}
 	// 각 파일 순회하면서 정보 출력
 	for _, dirPattern := range directoryPatterns {
