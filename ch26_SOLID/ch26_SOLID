@@ -1,0 +1,10 @@
+SOLID
+
+좋은 객체지향 프로그램은 SOLID 원칙을 따른 프로그램 이다.
+
+S: Single Responsibility Principle (단일 책임 원칙)
+O: Open-Closed Principle (개방-폐쇄 원칙)
+L: Liskov Substitution Principle (리스코프 치환 원칙)
+I: Interface Segregation Principle (인터페이스 분리원칙)
+D: Dependency Inversion Principle (의존 관계 역전 원칙)
+
