@@ -17,6 +17,7 @@ import (
 	ch23 "TuckerGolang/ch23_errorHandling"
 	ch24 "TuckerGolang/ch24_goroutine"
 	ch25 "TuckerGolang/ch25_channer_context"
+	ch26 "TuckerGolang/ch26_SOLID"
 	ch2 "TuckerGolang/ch2_ProgrammingLanguage"
 	ch3 "TuckerGolang/ch3_HelloGoWorld"
 	ch4 "TuckerGolang/ch4_Variable"
@@ -56,7 +57,12 @@ func main() {
 	//chapter23()
 	//chapter24()
 	//chapter25()
-	project2()
+	//project2()
+	chapter26()
+}
+
+func chapter26() {
+	ch26.Solid()
 }
 
 func project2() {
