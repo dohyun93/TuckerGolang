@@ -1,4 +1,4 @@
-package ch26_SOLID
+package ch27_SOLID
 
 import "fmt"
 

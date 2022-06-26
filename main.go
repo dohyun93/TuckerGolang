@@ -17,7 +17,8 @@ import (
 	ch23 "TuckerGolang/ch23_errorHandling"
 	ch24 "TuckerGolang/ch24_goroutine"
 	ch25 "TuckerGolang/ch25_channer_context"
-	ch26 "TuckerGolang/ch26_SOLID"
+	ch27 "TuckerGolang/ch27_SOLID"
+	ch28 "TuckerGolang/ch28_test_benchmark"
 	ch2 "TuckerGolang/ch2_ProgrammingLanguage"
 	ch3 "TuckerGolang/ch3_HelloGoWorld"
 	ch4 "TuckerGolang/ch4_Variable"
@@ -58,11 +59,16 @@ func main() {
 	//chapter24()
 	//chapter25()
 	//project2()
-	chapter26()
+	//chapter27()
+	chapter28()
 }
 
-func chapter26() {
-	ch26.Solid()
+func chapter28() {
+	ch28.Ch28_square()
+}
+
+func chapter27() {
+	ch27.Solid()
 }
 
 func project2() {
