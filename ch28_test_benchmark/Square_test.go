@@ -10,3 +10,10 @@ func TestSquare(t *testing.T) {
 		t.Errorf("Square(30) should be 900 but Square(30) returns %d", rst)
 	}
 }
+
+func TestSquare2(t *testing.T) {
+	rst := Square(3)
+	if rst != 9 {
+		t.Errorf("Square(3) should be 9 but returned %d", rst)
+	}
+}
