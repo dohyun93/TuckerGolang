@@ -2,5 +2,9 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/github.com/objx" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/github.com/stretchr/objx" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/github.com/stretchr/testify" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/github.com/testify" vcs="Git" />
   </component>
 </project>

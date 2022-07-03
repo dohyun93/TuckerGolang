@@ -1,6 +1,8 @@
 package ch28_test_benchmark
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func Ch28_square() {
 	fmt.Printf("30 * 30 = %d\n", Square(30))
@@ -9,6 +11,6 @@ func Ch28_square() {
 	fmt.Println(myString, *addressMyString)
 }
 
-func Square(age int64) int64 {
+func Square(age int) int {
 	return age * age
 }
